@@ -3,6 +3,8 @@ package com.his.service;
 import com.his.pojo.User;
 import com.his.pojo.dto.UserDto;
 
+import java.util.List;
+
 public interface IUserService {
     /**
      * 插入用户
@@ -39,4 +41,7 @@ public interface IUserService {
      * @param userId
      */
     void delete(Integer userId);
+    
+    
+    Iterable<User> findAll();
 }

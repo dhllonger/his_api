@@ -33,7 +33,7 @@ public interface PatiInfoBasicRepository extends CrudRepository<PatiInfoBasic, S
     @Query("UPDATE PatiInfoBasic p SET p.pname = :pname, p.pgender = :pgender WHERE p.pid = :pid")
     int updateInfoByPid(String pid, String pname, String pgender);
     
-    
+    // 根据关键词：姓名or身份证or手机号查询患者信息
     @Query("SELECT p FROM PatiInfoBasic p WHERE p.pname LIKE %:keyword% OR p.pidcard LIKE %:keyword% OR p.ptel LIKE %:keyword%")
     List<PatiInfoBasic> searchByKeyword(String keyword);
 

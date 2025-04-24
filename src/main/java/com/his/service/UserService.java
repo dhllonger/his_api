@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.his.pojo.User;
 import com.his.pojo.dto.UserDto;
 import com.his.repository.UserRepository;
+import java.util.List;
 
 @Service    // spring的bean
 public class UserService implements IUserService {
@@ -55,4 +56,10 @@ public class UserService implements IUserService {
     public void delete(Integer userId) {
          userRepository.deleteById(userId);
     }
+    
+    @Override
+    public Iterable<User> findAll() {
+    	return userRepository.findAll();
+    }
+    
 }

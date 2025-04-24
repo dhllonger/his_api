@@ -12,6 +12,8 @@ import com.his.service.IUserService;
 import com.his.utils.TokenUtils;
 import com.his.utils.JWTUtils;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController   // 接口方法返回对象 转换成json文本
 @RequestMapping("/user")    //  localhost:8088/user/**
@@ -31,10 +33,15 @@ public class UserController {
     }
 
 
+    // 查询所有
+    @GetMapping("/all")    
+    public ResponseMessage getAll(){
+        return ResponseMessage.success(userService.findAll());
+    }
 
 
     // 查询
-    @GetMapping("/{userId}")    // URL: localhost:8088/user/1    method: get
+    @GetMapping("/{userId}")   
     public ResponseMessage get(@PathVariable Integer userId){
         User userNew = userService.getUser(userId);
         return ResponseMessage.success(userNew);
@@ -61,9 +68,9 @@ public class UserController {
     public ResponseMessage login(@RequestBody Map<String, String> loginData) {
         String userName = loginData.get("username");
         String password = loginData.get("password");
-
+        User user;
         try {
-        	User user = userService.login(userName, password);
+        	user = userService.login(userName, password);
         } catch (IllegalArgumentException e) {
             // 捕获非法参数异常，返回失败的响应
             return ResponseMessage.error("用户名密码错误");
@@ -71,7 +78,11 @@ public class UserController {
         // 生成 token（这里假设你有 TokenUtils 工具类）
         String token = JWTUtils.generateToken(userName);
 
-        return ResponseMessage.success(token);
+        Map<String,Object> data = new HashMap<>();
+        data.put("user", user);
+        data.put("token", token);
+        
+        return ResponseMessage.success(data);
     }
 
 

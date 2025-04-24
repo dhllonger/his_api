@@ -11,7 +11,11 @@ public class JWTInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 从请求头中获取 token
+    	// 允许预检请求通过
+        if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
+            return true;
+        }
+    	// 从请求头中获取 token
         String token = request.getHeader("Authorization");
 
         if (token == null || !token.startsWith("Bearer ")) {
