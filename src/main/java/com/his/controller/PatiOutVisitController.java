@@ -3,6 +3,8 @@ package com.his.controller;
 import com.his.pojo.PatiOutVisit;
 import com.his.pojo.ResponseMessage;
 import com.his.pojo.dto.PatiOutVisitDto;
+import com.his.pojo.dto.PatientToDiagnoseDto;
+import com.his.repository.MergeQueryRepository;
 import com.his.service.IPatiOutVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -16,6 +18,8 @@ public class PatiOutVisitController {
     @Autowired
     private IPatiOutVisitService patiOutVisitService;
 
+    @Autowired
+    private MergeQueryRepository mergeQueryRepository;
     /**
      * 添加挂号信息
      */
@@ -62,6 +66,15 @@ public class PatiOutVisitController {
     public ResponseMessage delete(@PathVariable String pid) {
         patiOutVisitService.delete(pid);
         return ResponseMessage.success();
+    }
+    
+    @GetMapping("/visit/{doctName}")
+    public ResponseMessage findAllPatientVisitByDoctName(@PathVariable String doctName) {
+    	// List<Object[]> patients = mergeQueryRepository.findPatientToDiagnose2(doctName);
+    	List<PatientToDiagnoseDto> patients = mergeQueryRepository.findPatientToDiagnose(doctName);
+        
+        System.out.println(patients);
+        return ResponseMessage.success(patients);
     }
 
 
