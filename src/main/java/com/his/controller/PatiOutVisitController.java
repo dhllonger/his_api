@@ -67,11 +67,21 @@ public class PatiOutVisitController {
         patiOutVisitService.delete(pid);
         return ResponseMessage.success();
     }
-    
+
     @GetMapping("/visit/{doctName}")
     public ResponseMessage findAllPatientVisitByDoctName(@PathVariable String doctName) {
     	// List<Object[]> patients = mergeQueryRepository.findPatientToDiagnose2(doctName);
     	List<PatientToDiagnoseDto> patients = mergeQueryRepository.findPatientToDiagnose(doctName);
+        
+        System.out.println(patients);
+        return ResponseMessage.success(patients);
+    }
+
+
+    @GetMapping("/visited/{doctName}")
+    public ResponseMessage findAllPatientVisitedByDoctName(@PathVariable String doctName) {
+    	// List<Object[]> patients = mergeQueryRepository.findPatientToDiagnose2(doctName);
+    	List<PatientToDiagnoseDto> patients = mergeQueryRepository.findPatientToOrder(doctName);
         
         System.out.println(patients);
         return ResponseMessage.success(patients);

@@ -17,6 +17,8 @@ public class UserDto {
     @Email(message = "email格式不正确")
     private String email;
 
+    private String docType;
+    
     public String getUserName() {
         return userName;
     }
@@ -48,13 +50,21 @@ public class UserDto {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+    
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    public String getDocType() {
+		return docType;
+	}
+
+	public void setDocType(String docType) {
+		this.docType = docType;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDto [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email=" + email
+				+ ", docType=" + docType + "]";
+	}
+
+	
 }

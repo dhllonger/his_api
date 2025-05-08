@@ -15,6 +15,8 @@ public class User {
     private String password;
     @Column(name="email")
     private String email;
+    @Column(name="docType")
+    private String docType;
 
     public Integer getUserId() {
         return userId;
@@ -47,8 +49,18 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
 
-    @Override
+    public String getDocType() {
+		return docType;
+	}
+
+	public void setDocType(String docType) {
+		this.docType = docType;
+	}
+
+	@Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
