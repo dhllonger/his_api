@@ -2,8 +2,12 @@
 package com.his.service;
 
 import com.his.pojo.DoctorOrder;
+import com.his.pojo.User;
 import com.his.pojo.dto.DoctorOrderDto;
+import com.his.pojo.dto.UserDto;
 import com.his.repository.DoctorOrderRepository;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +46,13 @@ public class DoctorOrderService implements IDoctorOrderService {
     public Iterable<DoctorOrder> findAll() {
     	return repository.findAll();
     }
+    
+    @Override
+    public DoctorOrder edit(DoctorOrderDto order) {
+    	DoctorOrder doctorOrderPojo=new DoctorOrder();
+        BeanUtils.copyProperties(order,doctorOrderPojo);
+
+        return repository.save(doctorOrderPojo);
+    }
+    
 }

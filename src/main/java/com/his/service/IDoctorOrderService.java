@@ -12,4 +12,6 @@ public interface IDoctorOrderService {
     
     Iterable<DoctorOrder> findAll();
     
+    DoctorOrder edit(DoctorOrderDto order);
+    
 }

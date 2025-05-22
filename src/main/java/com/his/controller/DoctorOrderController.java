@@ -30,6 +30,18 @@ public class DoctorOrderController {
         DoctorOrder newOrder = service.add(dto);
         return ResponseMessage.success(newOrder);
     }
+    
+
+    /**
+     *编辑医嘱
+     */
+    @PutMapping
+    public ResponseMessage edit(@RequestBody DoctorOrderDto dto) {
+        DoctorOrder newOrder = service.edit(dto);
+        return ResponseMessage.success(newOrder);
+    }
+    
+    
 
     /**
      * 根据挂号编号查询医嘱
