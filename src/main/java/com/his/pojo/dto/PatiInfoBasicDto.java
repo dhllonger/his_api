@@ -22,7 +22,7 @@ public class PatiInfoBasicDto {
     @Length(max = 45, message = "身份证号不能超过45个字符")
     private String pidcard;
 
-    private Date pbirthday;
+    private String pbirthday;
 
     @Length(max = 45, message = "电话不能超过45个字符")
     private String ptel;
@@ -61,15 +61,16 @@ public class PatiInfoBasicDto {
         this.pidcard = pidcard;
     }
 
-    public Date getPbirthday() {
-        return pbirthday;
-    }
 
-    public void setPbirthday(Date pbirthday) {
-        this.pbirthday = pbirthday;
-    }
+    public String getPbirthday() {
+		return pbirthday;
+	}
 
-    public String getPtel() {
+	public void setPbirthday(String pbirthday) {
+		this.pbirthday = pbirthday;
+	}
+
+	public String getPtel() {
         return ptel;
     }
 

@@ -23,8 +23,7 @@ public class PatiInfoBasic {
     private String pidcard;
 
     @Column(name = "Pbirthday")
-    @Temporal(TemporalType.DATE)
-    private Date pbirthday;
+    private String pbirthday;
 
     @Column(name = "Ptel", length = 45)
     private String ptel;
@@ -62,15 +61,17 @@ public class PatiInfoBasic {
         this.pidcard = pidcard;
     }
 
-    public Date getPbirthday() {
-        return pbirthday;
-    }
+    
 
-    public void setPbirthday(Date pbirthday) {
-        this.pbirthday = pbirthday;
-    }
+    public String getPbirthday() {
+		return pbirthday;
+	}
 
-    public String getPtel() {
+	public void setPbirthday(String pbirthday) {
+		this.pbirthday = pbirthday;
+	}
+
+	public String getPtel() {
         return ptel;
     }
 
