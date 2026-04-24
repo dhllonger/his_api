@@ -33,3 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local-only overrides (secrets / machine-specific) ###
+application-local.properties
+application-local.yml
