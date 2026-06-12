@@ -115,6 +115,7 @@ java -jar target/springboot_his-0.0.1-SNAPSHOT.jar
 
 ## 常见问题
 
+- **`No goals have been specified` / `BUILD FAILURE`（只输入了 `./mvnw`）**：Maven 必须带**阶段或插件目标**。启动本项目请用 **`./mvnw spring-boot:run`**；其它示例：`./mvnw -v`、`./mvnw compile`、`./mvnw package`。在 VS Code 里更推荐直接打开 **`SpringbootHisApplication.java`**，点 **`main` 上方的 Run / Debug**，不要依赖「只运行 `mvnw`」的任务。
 - **`mvnw` 报找不到 java / javac**：安装 JDK 17+ 并配置 **`JAVA_HOME`** 与 **`PATH`**。  
 - **无法连接数据库**：检查 MySQL 服务、库名 **`his`**、用户名密码与 `application.properties` 是否一致。  
 - **端口占用**：修改 `server.port` 后，需同步修改前端 **`baseURL`**。
